@@ -36,6 +36,15 @@ import AaklanLabSection from '../components/AaklanLabSection.jsx';
 const RoboticsAI = () => {
   const sectionRef = useRef(null);
   const stepRefs = useRef([]);
+  const bookDemoRef = useRef(null);
+
+  // Function to scroll to BookFreeDemo section
+  const scrollToBookDemo = () => {
+    bookDemoRef.current?.scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'start'
+    });
+  };
 
   const setupSteps = [
     {
@@ -200,7 +209,7 @@ const RoboticsAI = () => {
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4">
-                <button className="group relative bg-gradient-to-r from-[#E22213] to-orange-500 hover:from-[#E22213]/90 hover:to-orange-600 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-xl sm:rounded-2xl font-semibold text-base sm:text-lg shadow-xl sm:shadow-2xl transform hover:scale-105 transition-all duration-300 hover:shadow-xl backdrop-blur-sm border-2 border-white/20 overflow-hidden w-full sm:w-auto">
+                <button onClick={scrollToBookDemo} className="group relative bg-gradient-to-r from-[#E22213] to-orange-500 hover:from-[#E22213]/90 hover:to-orange-600 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-xl sm:rounded-2xl font-semibold text-base sm:text-lg shadow-xl sm:shadow-2xl transform hover:scale-105 transition-all duration-300 hover:shadow-xl backdrop-blur-sm border-2 border-white/20 overflow-hidden w-full sm:w-auto">
                   <span className="relative z-10 flex items-center justify-center space-x-2">
                     <Target className="w-5 h-5" />
                     <span>Book Demo</span>
@@ -900,7 +909,9 @@ const RoboticsAI = () => {
     }
   `}</style>
       </section>
-      <BookFreeDemo />
+      <div ref={bookDemoRef}>
+        <BookFreeDemo />
+      </div>
       <OurBelivers />
     </>
   );
