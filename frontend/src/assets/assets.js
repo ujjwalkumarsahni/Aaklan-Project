@@ -62,6 +62,9 @@ import gradientleft from './gradient-left.png'
 import VRrightimage from './VR-Image/VRrightimage.png'
 import parentImage from './VR-Image/parentImage.png'
 import RBRightImage from './RB/RBRightImage.png'
+
+import labSetup from './labSetup.jpeg'
+import microcontroller from './microcontroller.jpeg'
 export const assets = {
     logo,
     heroBanner,
@@ -69,7 +72,9 @@ export const assets = {
     ton,
     MHS,
     gps,
-    banner
+    banner,
+    labSetup,
+    microcontroller
 }
 
 export const buttonCard = {

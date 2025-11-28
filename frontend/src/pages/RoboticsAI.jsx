@@ -1,6 +1,37 @@
 import React, { useEffect, useRef } from 'react';
 import OurBelivers from '../components/OurBelivers';
 import { RBLabImage } from '../assets/assets';
+import BookFreeDemo from '../components/BookFreeDemo';
+import HeroHeading from '../components/PageHeading/HeroHeading';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+// Import Lucide icons
+import { 
+  Target, 
+  Phone, 
+  ArrowRight, 
+  BookOpen, 
+  Settings, 
+  Lightbulb, 
+  ShoppingCart, 
+  Wrench, 
+  GraduationCap, 
+  Rocket,
+  ChevronDown,
+  Laptop,
+  Cpu,
+  Brain,
+  Globe,
+  FileText,
+  Users,
+  CheckCircle,
+  Star,
+  Award,
+  Download,
+  PlayCircle
+} from 'lucide-react';
+import AaklanLabSection from '../components/AaklanLabSection.jsx';
 
 const RoboticsAI = () => {
   const sectionRef = useRef(null);
@@ -11,7 +42,7 @@ const RoboticsAI = () => {
       step: 1,
       title: 'Share Your Requirement',
       description: 'Tell us about your school needs, budget, and goals for the AI & Robotics lab',
-      icon: '📝',
+      icon: <FileText className="w-5 h-5 sm:w-6 sm:h-6" />,
       status: 'current',
       bgImage: 'https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
     },
@@ -19,7 +50,7 @@ const RoboticsAI = () => {
       step: 2,
       title: 'Consultation & Planning',
       description: 'Our experts analyze your space and create a customized lab blueprint',
-      icon: '💡',
+      icon: <Lightbulb className="w-5 h-5 sm:w-6 sm:h-6" />,
       status: 'upcoming',
       bgImage: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
     },
@@ -27,7 +58,7 @@ const RoboticsAI = () => {
       step: 3,
       title: 'Order Customized Lab',
       description: 'We prepare your tailored package with robots, curriculum, and equipment',
-      icon: '🛒',
+      icon: <ShoppingCart className="w-5 h-5 sm:w-6 sm:h-6" />,
       status: 'upcoming',
       bgImage: 'https://images.unsplash.com/photo-1565688534245-05d6b5be184a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
     },
@@ -35,7 +66,7 @@ const RoboticsAI = () => {
       step: 4,
       title: 'Setup & Installation',
       description: 'Professional installation of all equipment and software setup',
-      icon: '🔧',
+      icon: <Wrench className="w-5 h-5 sm:w-6 sm:h-6" />,
       status: 'upcoming',
       bgImage: 'https://images.unsplash.com/photo-1581094794329-c6fe63c7e35e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
     },
@@ -43,7 +74,7 @@ const RoboticsAI = () => {
       step: 5,
       title: 'Teacher Training',
       description: 'Comprehensive training program for educators and staff',
-      icon: '👨‍🏫',
+      icon: <GraduationCap className="w-5 h-5 sm:w-6 sm:h-6" />,
       status: 'upcoming',
       bgImage: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
     },
@@ -51,13 +82,21 @@ const RoboticsAI = () => {
       step: 6,
       title: 'Launch & Support',
       description: 'Grand opening and ongoing technical support for your lab',
-      icon: '🚀',
+      icon: <Rocket className="w-5 h-5 sm:w-6 sm:h-6" />,
       status: 'upcoming',
       bgImage: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
     }
   ];
 
   useEffect(() => {
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100,
+      easing: 'ease-in-out',
+    });
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -120,25 +159,18 @@ const RoboticsAI = () => {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex items-center py-8 sm:py-12 lg:py-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center w-full">
             {/* Left Content */}
-            <div className="text-center lg:text-left space-y-6 sm:space-y-8">
+            <div className="text-center lg:text-left space-y-6 sm:space-y-8" data-aos="fade-right">
               {/* Badge */}
               <div className="inline-flex items-center px-3 py-1 sm:px-4 sm:py-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 shadow-lg">
                 <span className="w-2 h-2 bg-[#E22213] rounded-full animate-pulse mr-2"></span>
                 <span className="text-xs sm:text-sm font-semibold text-[#0b234a]">
-                  🚀 Transforming Education with AI & Robotics
+                  <Rocket className="w-4 h-4 inline mr-1" />
+                  Transforming Education with AI & Robotics
                 </span>
               </div>
 
               {/* Main Heading */}
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
-                <span className="bg-gradient-to-r from-[#E22213] via-[#0b234a] to-orange-500 bg-clip-text text-transparent">
-                  AI and Robotics
-                </span>
-                <br />
-                <span className="text-gray-900 text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
-                  Lab for Schools
-                </span>
-              </h1>
+              <HeroHeading colorHeading='AI and Robotics' NonColorHading='Lab for Schools'/>
 
               {/* Description */}
               <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-700 leading-relaxed max-w-2xl">
@@ -149,13 +181,18 @@ const RoboticsAI = () => {
               {/* Features List */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 max-w-xl">
                 {[
-                  { icon: '📚', text: 'Comprehensive Curriculum' },
-                  { icon: '🤖', text: 'Interactive Robots' },
-                  { icon: '🔬', text: 'Hands-on Projects' },
-                  { icon: '🌍', text: 'Real-life Applications' }
+                  { icon: <BookOpen className="w-5 h-5" />, text: 'Comprehensive Curriculum' },
+                  { icon: <Cpu className="w-5 h-5" />, text: 'Interactive Robots' },
+                  { icon: <Settings className="w-5 h-5" />, text: 'Hands-on Projects' },
+                  { icon: <Globe className="w-5 h-5" />, text: 'Real-life Applications' }
                 ].map((feature, index) => (
-                  <div key={index} className="flex items-center space-x-2 sm:space-x-3 p-2 sm:p-3 bg-white/60 backdrop-blur-sm rounded-xl sm:rounded-2xl border border-white/50 shadow-sm">
-                    <span className="text-xl sm:text-2xl">{feature.icon}</span>
+                  <div 
+                    key={index} 
+                    className="flex items-center space-x-2 sm:space-x-3 p-2 sm:p-3 bg-white/60 backdrop-blur-sm rounded-xl sm:rounded-2xl border border-white/50 shadow-sm hover:shadow-md hover:scale-105 transition-all duration-300 cursor-pointer"
+                    data-aos="zoom-in"
+                    data-aos-delay={index * 100}
+                  >
+                    <span className="text-[#E22213]">{feature.icon}</span>
                     <span className="text-sm sm:text-base text-gray-700 font-medium">{feature.text}</span>
                   </div>
                 ))}
@@ -165,15 +202,17 @@ const RoboticsAI = () => {
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4">
                 <button className="group relative bg-gradient-to-r from-[#E22213] to-orange-500 hover:from-[#E22213]/90 hover:to-orange-600 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-xl sm:rounded-2xl font-semibold text-base sm:text-lg shadow-xl sm:shadow-2xl transform hover:scale-105 transition-all duration-300 hover:shadow-xl backdrop-blur-sm border-2 border-white/20 overflow-hidden w-full sm:w-auto">
                   <span className="relative z-10 flex items-center justify-center space-x-2">
-                    <span>🎯 Book Demo</span>
-                    <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
+                    <Target className="w-5 h-5" />
+                    <span>Book Demo</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                   </span>
                   <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </button>
 
                 <button className="group relative border-2 border-[#0b234a] hover:border-[#E22213] text-[#0b234a] hover:text-[#E22213] px-6 py-3 sm:px-8 sm:py-4 rounded-xl sm:rounded-2xl font-semibold text-base sm:text-lg transition-all duration-300 hover:shadow-xl backdrop-blur-sm bg-white/80 hover:bg-white overflow-hidden w-full sm:w-auto">
                   <span className="relative z-10 flex items-center justify-center space-x-2">
-                    <span>📞 Contact Us</span>
+                    <Phone className="w-5 h-5" />
+                    <span>Contact Us</span>
                   </span>
                   <div className="absolute inset-0 bg-gradient-to-r from-[#0b234a]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </button>
@@ -182,12 +221,18 @@ const RoboticsAI = () => {
               {/* Stats */}
               <div className="grid grid-cols-3 gap-4 sm:gap-6 lg:gap-8 pt-6 sm:pt-8 max-w-md mx-auto lg:mx-0">
                 {[
-                  { number: '50+', label: 'Schools' },
-                  { number: '10K+', label: 'Students' },
-                  { number: '99%', label: 'Satisfaction' }
+                  { number: '50+', label: 'Schools', icon: <Users className="w-4 h-4" /> },
+                  { number: '10K+', label: 'Students', icon: <GraduationCap className="w-4 h-4" /> },
+                  { number: '99%', label: 'Satisfaction', icon: <Star className="w-4 h-4" /> }
                 ].map((stat, index) => (
-                  <div key={index} className="text-center">
-                    <div className="text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r from-[#E22213] to-orange-500 bg-clip-text text-transparent">
+                  <div 
+                    key={index} 
+                    className="text-center"
+                    data-aos="fade-up"
+                    data-aos-delay={index * 150}
+                  >
+                    <div className="text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r from-[#E22213] to-orange-500 bg-clip-text text-transparent flex items-center justify-center gap-2">
+                      {stat.icon}
                       {stat.number}
                     </div>
                     <div className="text-xs sm:text-sm text-gray-600 font-medium mt-1">{stat.label}</div>
@@ -197,14 +242,14 @@ const RoboticsAI = () => {
             </div>
 
             {/* Right Content - Visual with Image */}
-            <div className="relative mt-8 lg:mt-0">
+            <div className="relative mt-8 lg:mt-0" data-aos="fade-left" data-aos-delay="300">
               {/* Main Hero Image/Illustration */}
               <div className="relative">
                 {/* Background Card */}
                 <div className="absolute inset-0 bg-gradient-to-br from-[#E22213]/10 via-[#0b234a]/10 to-orange-500/10 rounded-2xl sm:rounded-3xl transform rotate-3 sm:rotate-6 scale-105 blur-sm"></div>
 
                 {/* Main Image Container */}
-                <div className="relative bg-white/80 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-xl sm:shadow-2xl border border-white/50 overflow-hidden">
+                <div className="relative bg-white/80 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-xl sm:shadow-2xl border border-white/50 overflow-hidden hover:shadow-2xl transition-all duration-500">
                   <div className="aspect-square rounded-xl sm:rounded-2xl overflow-hidden bg-gradient-to-br from-[#0b234a] to-[#E22213] relative">
                     {/* Actual Image with Overlay */}
                     <div className="absolute inset-0">
@@ -220,7 +265,9 @@ const RoboticsAI = () => {
                     {/* Content Overlay */}
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="text-center text-white p-4 sm:p-6 lg:p-8">
-                        <div className="text-4xl sm:text-5xl lg:text-6xl mb-3 sm:mb-4">🤖</div>
+                        <div className="text-4xl sm:text-5xl lg:text-6xl mb-3 sm:mb-4">
+                          <Cpu className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 mx-auto" />
+                        </div>
                         <h3 className="text-lg sm:text-xl lg:text-2xl font-bold mb-2">AI & Robotics Lab</h3>
                         <p className="text-white/80 text-sm sm:text-base">Future-ready education</p>
                       </div>
@@ -228,10 +275,14 @@ const RoboticsAI = () => {
 
                     {/* Floating Elements */}
                     <div className="absolute top-2 left-2 sm:top-4 sm:left-4 w-8 h-8 sm:w-12 sm:h-12 lg:w-16 lg:h-16 bg-white/20 rounded-full animate-float flex items-center justify-center">
-                      <span className="text-white text-xs">AI</span>
+                      <span className="text-white text-xs">
+                        <Brain className="w-3 h-3 sm:w-4 sm:h-4" />
+                      </span>
                     </div>
                     <div className="absolute bottom-2 right-2 sm:bottom-4 sm:right-4 w-6 h-6 sm:w-8 sm:h-8 lg:w-12 lg:h-12 bg-orange-500/30 rounded-lg rotate-45 animate-float flex items-center justify-center" style={{ animationDelay: '2s' }}>
-                      <span className="text-white text-xs">🤖</span>
+                      <span className="text-white text-xs">
+                        <Cpu className="w-3 h-3 sm:w-4 sm:h-4" />
+                      </span>
                     </div>
                     <div className="absolute top-1/2 left-1/4 w-4 h-4 sm:w-6 sm:h-6 lg:w-8 lg:h-8 bg-[#E22213]/40 rounded-full animate-pulse"></div>
                   </div>
@@ -242,10 +293,10 @@ const RoboticsAI = () => {
                 </div>
 
                 {/* Floating Cards - Responsive positioning */}
-                <div className="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 lg:-bottom-8 lg:-left-8 bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl p-2 sm:p-3 lg:p-4 shadow-lg sm:shadow-xl border border-white/50 transform hover:scale-105 transition-all duration-300 max-w-[140px] sm:max-w-none z-10">
+                <div className="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 lg:-bottom-8 lg:-left-8 bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl p-2 sm:p-3 lg:p-4 shadow-lg sm:shadow-xl border border-white/50 transform hover:scale-105 transition-all duration-300 max-w-[140px] sm:max-w-none z-10 hover:shadow-2xl cursor-pointer">
                   <div className="flex items-center space-x-2 sm:space-x-3">
                     <div className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 bg-gradient-to-r from-[#E22213] to-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
-                      <span className="text-white text-xs sm:text-sm">📊</span>
+                      <BookOpen className="text-white w-3 h-3 sm:w-4 sm:h-4" />
                     </div>
                     <div className="min-w-0">
                       <div className="text-xs sm:text-sm font-semibold text-[#0b234a] truncate">Curriculum</div>
@@ -254,10 +305,10 @@ const RoboticsAI = () => {
                   </div>
                 </div>
 
-                <div className="absolute -top-4 -right-4 sm:-top-6 sm:-right-6 lg:-top-8 lg:-right-8 bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl p-2 sm:p-3 lg:p-4 shadow-lg sm:shadow-xl border border-white/50 transform hover:scale-105 transition-all duration-300 max-w-[140px] sm:max-w-none z-10">
+                <div className="absolute -top-4 -right-4 sm:-top-6 sm:-right-6 lg:-top-8 lg:-right-8 bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl p-2 sm:p-3 lg:p-4 shadow-lg sm:shadow-xl border border-white/50 transform hover:scale-105 transition-all duration-300 max-w-[140px] sm:max-w-none z-10 hover:shadow-2xl cursor-pointer">
                   <div className="flex items-center space-x-2 sm:space-x-3">
                     <div className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 bg-gradient-to-r from-[#0b234a] to-[#E22213] rounded-full flex items-center justify-center flex-shrink-0">
-                      <span className="text-white text-xs sm:text-sm">🔧</span>
+                      <Settings className="text-white w-3 h-3 sm:w-4 sm:h-4" />
                     </div>
                     <div className="min-w-0">
                       <div className="text-xs sm:text-sm font-semibold text-[#0b234a] truncate">Setup</div>
@@ -271,11 +322,11 @@ const RoboticsAI = () => {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2">
+        <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2" data-aos="fade-up" data-aos-delay="500">
           <div className="flex flex-col items-center space-y-1 sm:space-y-2">
             <span className="text-xs sm:text-sm text-gray-600 font-medium">Scroll to explore</span>
             <div className="w-5 h-8 sm:w-6 sm:h-10 border-2 border-gray-400 rounded-full flex justify-center">
-              <div className="w-1 h-2 sm:h-3 bg-gradient-to-b from-[#E22213] to-orange-500 rounded-full mt-1 sm:mt-2 animate-bounce"></div>
+              <ChevronDown className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400 mt-1 sm:mt-2 animate-bounce" />
             </div>
           </div>
         </div>
@@ -302,237 +353,9 @@ const RoboticsAI = () => {
   `}</style>
       </section>
 
-      <section className="relative py-10 sm:py-15 lg:py-18 bg-gradient-to-br from-gray-50 via-white to-blue-50/30 overflow-hidden">
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          {/* Floating Circles - Responsive sizes */}
-          <div className="absolute top-4 left-4 w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 bg-[#E22213]/20 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-float"></div>
-          <div className="absolute top-20 right-4 sm:top-40 sm:right-10 w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 bg-[#0b234a]/20 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-float" style={{ animationDelay: '2s' }}></div>
-          <div className="absolute bottom-16 left-8 sm:bottom-20 sm:left-20 w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 bg-orange-500/20 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-float" style={{ animationDelay: '4s' }}></div>
+       <AaklanLabSection />
 
-          {/* Grid Pattern */}
-          <div className="absolute inset-0 opacity-5">
-            <div className="absolute inset-0" style={{
-              backgroundImage: `linear-gradient(#0b234a 1px, transparent 1px),
-                              linear-gradient(90deg, #0b234a 1px, transparent 1px)`,
-              backgroundSize: '30px 30px',
-            }}></div>
-          </div>
-
-          {/* Animated Gradient Orbs - Responsive sizes */}
-          <div className="absolute -top-32 -left-32 w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-gradient-to-r from-[#E22213] to-[#0b234a] rounded-full opacity-5 animate-pulse-slow"></div>
-          <div className="absolute -bottom-32 -right-32 w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-gradient-to-r from-[#0b234a] to-orange-500 rounded-full opacity-5 animate-pulse-slow" style={{ animationDelay: '1.5s' }}></div>
-
-          {/* Additional floating elements - Responsive positioning */}
-          <div className="absolute top-1/4 right-1/4 w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 bg-gradient-to-br from-[#E22213] to-orange-500 rounded-full opacity-10 animate-float" style={{ animationDelay: '1s' }}></div>
-          <div className="absolute bottom-1/3 left-1/4 w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 bg-gradient-to-tr from-[#0b234a] to-[#E22213] rounded-full opacity-15 animate-float" style={{ animationDelay: '3s' }}></div>
-        </div>
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section Header */}
-          <div className="text-center mb-12 sm:mb-16 lg:mb-20">
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 shadow-lg mb-6">
-              <span className="w-2 h-2 bg-[#E22213] rounded-full animate-pulse mr-2"></span>
-              <span className="text-sm font-semibold text-[#0b234a]">
-                📚 Comprehensive Learning Resources
-              </span>
-            </div>
-
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
-              <span className="bg-gradient-to-r from-[#E22213] via-[#0b234a] to-orange-500 bg-clip-text text-transparent">
-                Coding, Robotics & AI
-              </span>
-              <br />
-              <span className="text-gray-900">Textbooks</span>
-            </h2>
-
-            <p className="text-lg sm:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              Structured curriculum designed to build foundational skills and advance to complex AI and robotics concepts
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
-            {/* Left Content - Book Description */}
-            <div className="space-y-6 sm:space-y-8">
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-xl border border-white/50">
-                <div className="flex items-start space-x-4 mb-6">
-                  <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-r from-[#E22213] to-orange-500 rounded-xl flex items-center justify-center">
-                    <span className="text-white text-lg sm:text-xl">📖</span>
-                  </div>
-                  <div>
-                    <h3 className="text-xl sm:text-2xl font-bold text-[#0b234a] mb-2">
-                      Fundamentals to Advanced Concepts
-                    </h3>
-                    <p className="text-gray-700 leading-relaxed">
-                      This book introduces the fundamentals of computers, coding, AI, and robotics, equipping students with essential skills in HTML and Python. Through the PictoBlox platform and the Quarky Ultimate Kit, learners engage in hands-on projects that enhance their problem-solving and logical thinking abilities, empowering them to design and program their own intelligent robots.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Platform Highlights */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
-                  <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-[#0b234a]/5 to-transparent rounded-xl border border-[#0b234a]/10">
-                    <div className="w-8 h-8 bg-[#0b234a] rounded-lg flex items-center justify-center">
-                      <span className="text-white text-sm">🖥️</span>
-                    </div>
-                    <span className="text-sm font-medium text-[#0b234a]">PictoBlox Platform</span>
-                  </div>
-                  <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-[#E22213]/5 to-transparent rounded-xl border border-[#E22213]/10">
-                    <div className="w-8 h-8 bg-[#E22213] rounded-lg flex items-center justify-center">
-                      <span className="text-white text-sm">🤖</span>
-                    </div>
-                    <span className="text-sm font-medium text-[#E22213]">Quarky Ultimate Kit</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Skills Developed */}
-              <div className="bg-gradient-to-br from-[#0b234a] to-[#E22213] rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-white shadow-2xl">
-                <h4 className="text-lg sm:text-xl font-bold mb-4 flex items-center">
-                  <span className="w-2 h-2 bg-orange-400 rounded-full animate-pulse mr-2"></span>
-                  Skills Developed
-                </h4>
-                <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                  {[
-                    { icon: '💻', skill: 'HTML & Python' },
-                    { icon: '🔧', skill: 'Robotics Design' },
-                    { icon: '🎯', skill: 'Problem Solving' },
-                    { icon: '🧠', skill: 'Logical Thinking' }
-                  ].map((item, index) => (
-                    <div key={index} className="flex items-center space-x-2 sm:space-x-3 p-2 sm:p-3 bg-white/10 rounded-xl backdrop-blur-sm">
-                      <span className="text-lg">{item.icon}</span>
-                      <span className="text-xs sm:text-sm font-medium">{item.skill}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Right Content - Grade Levels */}
-            <div className="space-y-6 sm:space-y-8">
-              {/* Grade Selection */}
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-xl border border-white/50">
-                <h3 className="text-xl sm:text-2xl font-bold text-[#0b234a] mb-6 flex items-center">
-                  <span className="w-2 h-2 bg-[#E22213] rounded-full animate-pulse mr-2"></span>
-                  Available for Grades
-                </h3>
-
-                <div className="grid grid-cols-2 sm:grid-cols-2 gap-4">
-                  {[
-                    { grade: 'Grade 6', color: 'from-blue-500 to-cyan-500', icon: '🌟' },
-                    { grade: 'Grade 7', color: 'from-green-500 to-emerald-500', icon: '🚀' },
-                    { grade: 'Grade 8', color: 'from-purple-500 to-pink-500', icon: '💫' },
-                    { grade: 'Grade 9-12', color: 'from-orange-500 to-red-500', icon: '🎯' }
-                  ].map((item, index) => (
-                    <div
-                      key={index}
-                      className="group relative bg-gradient-to-br from-white to-gray-50 rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg border border-gray-200/50 transform hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden"
-                    >
-                      {/* Background Gradient on Hover */}
-                      <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
-
-                      {/* Animated Border */}
-                      <div className={`absolute inset-0 rounded-xl sm:rounded-2xl bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-sm`}></div>
-
-                      <div className="relative z-10 text-center">
-                        <div className="text-2xl sm:text-3xl mb-2 sm:mb-3 transform group-hover:scale-110 transition-transform duration-300">
-                          {item.icon}
-                        </div>
-                        <div className={`text-sm sm:text-base font-bold bg-gradient-to-r ${item.color} bg-clip-text text-transparent`}>
-                          {item.grade}
-                        </div>
-                        <div className="text-xs text-gray-500 mt-1 group-hover:text-gray-700 transition-colors duration-300">
-                          Curriculum
-                        </div>
-                      </div>
-
-                      {/* Hover Effect */}
-                      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-1 bg-gradient-to-r from-transparent via-current to-transparent group-hover:w-3/4 transition-all duration-300"></div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Features */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="bg-gradient-to-br from-orange-500/10 to-red-500/5 rounded-2xl p-4 sm:p-6 border border-orange-200/50">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-orange-500 rounded-lg flex items-center justify-center">
-                      <span className="text-white text-sm">👨‍💻</span>
-                    </div>
-                    <div>
-                      <div className="font-semibold text-gray-900">Hands-on</div>
-                      <div className="text-sm text-gray-600">Projects</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="bg-gradient-to-br from-blue-500/10 to-cyan-500/5 rounded-2xl p-4 sm:p-6 border border-blue-200/50">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center">
-                      <span className="text-white text-sm">🤖</span>
-                    </div>
-                    <div>
-                      <div className="font-semibold text-gray-900">Intelligent</div>
-                      <div className="text-sm text-gray-600">Robots</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* CTA Button */}
-              <button className="group relative w-full bg-gradient-to-r from-[#E22213] to-orange-500 hover:from-[#E22213]/90 hover:to-orange-600 text-white py-3 sm:py-4 rounded-xl sm:rounded-2xl font-semibold text-base sm:text-lg shadow-xl transform hover:scale-105 transition-all duration-300 hover:shadow-2xl backdrop-blur-sm border-2 border-white/20 overflow-hidden">
-                <span className="relative z-10 flex items-center justify-center space-x-2">
-                  <span>📚 View Sample Chapters</span>
-                  <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </button>
-            </div>
-          </div>
-
-          {/* Additional Info */}
-          <div className="mt-12 sm:mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-            {[
-              {
-                icon: '📋',
-                title: 'Structured Curriculum',
-                description: 'Progressive learning path from basics to advanced concepts'
-              },
-              {
-                icon: '🛠️',
-                title: 'Project-Based Learning',
-                description: 'Build real projects with PictoBlox and Quarky Kit'
-              },
-              {
-                icon: '🎓',
-                title: 'Teacher Resources',
-                description: 'Complete lesson plans and assessment tools'
-              }
-            ].map((item, index) => (
-              <div key={index} className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/50 transform hover:scale-105 transition-all duration-300">
-                <div className="text-3xl mb-3">{item.icon}</div>
-                <h4 className="font-bold text-gray-900 mb-2">{item.title}</h4>
-                <p className="text-sm text-gray-600 leading-relaxed">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Custom Animations */}
-        <style jsx>{`
-    @keyframes float {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-10px) rotate(180deg); }
-    }
-    
-    .animate-float {
-      animation: float 8s ease-in-out infinite;
-    }
-  `}</style>
-      </section>
-
-      <section
+       <section
         ref={sectionRef}
         className="relative py-8 sm:py-12 lg:py-16 bg-gradient-to-br from-gray-50 to-blue-50 overflow-hidden"
       >
@@ -565,7 +388,8 @@ const RoboticsAI = () => {
           {/* Section Header with Gradient */}
           <div
             ref={addToRefs}
-            className="text-center mb-8 sm:mb-12 lg:mb-16 transform transition-all duration-700 opacity-0 translate-y-8"
+            className="text-center mb-8 sm:mb-12 lg:mb-16"
+            data-aos="fade-up"
           >
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2 sm:mb-3 bg-gradient-to-r from-[#E22213] via-[#0b234a] to-orange-500 bg-clip-text text-transparent">
               How to Set Up Robotics & AI Lab
@@ -595,8 +419,10 @@ const RoboticsAI = () => {
                 <div
                   key={step.step}
                   ref={addToRefs}
-                  className={`relative flex flex-col md:flex-row items-center transform transition-all duration-700 opacity-0 translate-y-8 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''
+                  className={`relative flex flex-col md:flex-row items-center ${index % 2 === 0 ? 'md:flex-row-reverse' : ''
                     }`}
+                  data-aos={index % 2 === 0 ? 'fade-left' : 'fade-right'}
+                  data-aos-delay={index * 100}
                 >
                   {/* Step Content with Background Image */}
                   <div
@@ -607,7 +433,7 @@ const RoboticsAI = () => {
                       className={`mx-2 sm:mx-5 relative rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-xl sm:shadow-2xl border-2 overflow-hidden group backdrop-blur-sm bg-white/10 ${step.status === 'current'
                         ? 'border-[#E22213] shadow-[#E22213]/20'
                         : 'border-gray-300/50'
-                        } transform hover:scale-105 transition-all duration-500 min-h-[180px] sm:min-h-[200px] md:min-h-[220px] hover:shadow-2xl`}
+                        } transform hover:scale-105 transition-all duration-500 min-h-[180px] sm:min-h-[200px] md:min-h-[220px] hover:shadow-2xl cursor-pointer`}
                     >
                       {/* Background Image with Parallax Effect */}
                       <div
@@ -640,7 +466,8 @@ const RoboticsAI = () => {
                               </span>
                               {step.status === 'current' && (
                                 <span className="px-2 py-1 text-xs bg-[#E22213] text-white rounded-full font-medium backdrop-blur-sm border border-orange-300/30 w-fit">
-                                  🔥 Current Step
+                                  <span className="w-1.5 h-1.5 bg-orange-300 rounded-full animate-pulse inline-block mr-1"></span>
+                                  Current Step
                                 </span>
                               )}
                             </div>
@@ -681,7 +508,7 @@ const RoboticsAI = () => {
                         : step.step < setupSteps.find(s => s.status === 'current')?.step
                           ? 'bg-[#0b234a] hover:bg-[#0b234a]/90 hover:scale-110'
                           : 'bg-gray-500 hover:bg-gray-600 hover:scale-110'
-                        }`}
+                        } cursor-pointer`}
                     >
                       {step.step}
                     </div>
@@ -698,11 +525,15 @@ const RoboticsAI = () => {
             {/* Goal Destination */}
             <div
               ref={addToRefs}
-              className="absolute left-0 md:left-1/2 md:-translate-x-1/2 -bottom-20 sm:-bottom-24 transform -translate-y-1/2 z-20 transform transition-all duration-700 opacity-0 translate-y-8"
+              className="absolute left-0 md:left-1/2 md:-translate-x-1/2 -bottom-20 sm:-bottom-24 transform -translate-y-1/2 z-20"
+              data-aos="zoom-in"
+              data-aos-delay="500"
             >
-              <div className="bg-gradient-to-r from-[#0b234a] to-[#E22213] text-white p-3 sm:p-4 md:p-6 rounded-xl sm:rounded-2xl shadow-xl sm:shadow-2xl border-2 border-white/50 transform hover:scale-105 transition-all duration-500 backdrop-blur-sm max-w-[280px] sm:max-w-none">
+              <div className="bg-gradient-to-r from-[#0b234a] to-[#E22213] text-white p-3 sm:p-4 md:p-6 rounded-xl sm:rounded-2xl shadow-xl sm:shadow-2xl border-2 border-white/50 transform hover:scale-105 transition-all duration-500 backdrop-blur-sm max-w-[280px] sm:max-w-none cursor-pointer hover:shadow-3xl">
                 <div className="flex items-center space-x-2 sm:space-x-3 md:space-x-4">
-                  <div className="text-xl sm:text-2xl md:text-3xl animate-bounce">🏁</div>
+                  <div className="text-xl sm:text-2xl md:text-3xl animate-bounce">
+                    <CheckCircle className="w-6 h-6 sm:w-8 sm:h-8" />
+                  </div>
                   <div>
                     <div className="font-bold text-sm sm:text-base md:text-lg lg:text-xl">Goal Achieved!</div>
                     <div className="text-xs sm:text-sm opacity-90 mt-1">Your AI & Robotics Lab is Ready</div>
@@ -715,14 +546,18 @@ const RoboticsAI = () => {
           {/* CTA Buttons */}
           <div
             ref={addToRefs}
-            className="text-center mt-20 sm:mt-24 md:mt-28 lg:mt-32 space-y-4 sm:space-y-6 transform transition-all duration-700 opacity-0 translate-y-8"
+            className="text-center mt-20 sm:mt-24 md:mt-28 lg:mt-32 space-y-4 sm:space-y-6"
+            data-aos="fade-up"
+            data-aos-delay="300"
           >
             <div className="flex flex-col sm:flex-row justify-center items-center space-y-3 sm:space-y-0 sm:space-x-4 lg:space-x-6">
-              <button className="bg-gradient-to-r from-[#E22213] to-orange-500 hover:from-[#E22213]/90 hover:to-orange-600 text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-xl sm:rounded-2xl font-semibold text-sm sm:text-base md:text-lg shadow-xl sm:shadow-2xl transform hover:scale-105 transition-all duration-300 hover:shadow-xl backdrop-blur-sm border-2 border-white/20 w-full sm:w-auto">
-                🚀 Start Your Journey Today
+              <button className="bg-gradient-to-r from-[#E22213] to-orange-500 hover:from-[#E22213]/90 hover:to-orange-600 text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-xl sm:rounded-2xl font-semibold text-sm sm:text-base md:text-lg shadow-xl sm:shadow-2xl transform hover:scale-105 transition-all duration-300 hover:shadow-xl backdrop-blur-sm border-2 border-white/20 w-full sm:w-auto flex items-center justify-center space-x-2">
+                <Rocket className="w-5 h-5" />
+                <span>Start Your Journey Today</span>
               </button>
-              <button className="border-2 border-[#0b234a] hover:border-[#E22213] text-[#0b234a] hover:text-[#E22213] px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-xl sm:rounded-2xl font-semibold text-sm sm:text-base md:text-lg transition-all duration-300 hover:shadow-lg backdrop-blur-sm bg-white/80 hover:bg-white w-full sm:w-auto">
-                📥 Download Setup Guide
+              <button className="border-2 border-[#0b234a] hover:border-[#E22213] text-[#0b234a] hover:text-[#E22213] px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-xl sm:rounded-2xl font-semibold text-sm sm:text-base md:text-lg transition-all duration-300 hover:shadow-lg backdrop-blur-sm bg-white/80 hover:bg-white w-full sm:w-auto flex items-center justify-center space-x-2">
+                <Download className="w-5 h-5" />
+                <span>Download Setup Guide</span>
               </button>
             </div>
           </div>
@@ -802,191 +637,254 @@ const RoboticsAI = () => {
         `}</style>
       </section>
 
-      <section className="relative py-10 sm:py-15 lg:py-18 bg-gradient-to-br from-[#0b234a] via-[#1e3a6b] to-[#E22213] overflow-hidden">
+      <section className="relative py-10 sm:py-15 lg:py-18 bg-gradient-to-br from-gray-50 via-white to-blue-50/30 overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
-          {/* Floating Elements */}
-          <div className="absolute top-10 left-10 w-48 h-48 sm:w-64 sm:h-64 bg-white/5 rounded-full mix-blend-screen filter blur-xl opacity-30 animate-float"></div>
-          <div className="absolute top-40 right-10 w-40 h-40 sm:w-56 sm:h-56 bg-orange-500/10 rounded-full mix-blend-screen filter blur-xl opacity-25 animate-float" style={{ animationDelay: '2s' }}></div>
-          <div className="absolute bottom-20 left-1/4 w-32 h-32 sm:w-48 sm:h-48 bg-white/10 rounded-full mix-blend-screen filter blur-xl opacity-20 animate-float" style={{ animationDelay: '3s' }}></div>
+          {/* Floating Circles - Responsive sizes */}
+          <div className="absolute top-4 left-4 w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 bg-[#E22213]/20 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-float"></div>
+          <div className="absolute top-20 right-4 sm:top-40 sm:right-10 w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 bg-[#0b234a]/20 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-float" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute bottom-16 left-8 sm:bottom-20 sm:left-20 w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 bg-orange-500/20 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-float" style={{ animationDelay: '4s' }}></div>
 
           {/* Grid Pattern */}
-          <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0 opacity-5">
             <div className="absolute inset-0" style={{
-              backgroundImage: `linear-gradient(white 1px, transparent 1px),
-                        linear-gradient(90deg, white 1px, transparent 1px)`,
-              backgroundSize: '50px 50px',
+              backgroundImage: `linear-gradient(#0b234a 1px, transparent 1px),
+                              linear-gradient(90deg, #0b234a 1px, transparent 1px)`,
+              backgroundSize: '30px 30px',
             }}></div>
           </div>
 
-          {/* Sparkle Elements */}
-          <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-white rounded-full animate-pulse"></div>
-          <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-orange-400 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-          <div className="absolute bottom-1/4 left-1/3 w-1.5 h-1.5 bg-yellow-300 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
+          {/* Animated Gradient Orbs - Responsive sizes */}
+          <div className="absolute -top-32 -left-32 w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-gradient-to-r from-[#E22213] to-[#0b234a] rounded-full opacity-5 animate-pulse-slow"></div>
+          <div className="absolute -bottom-32 -right-32 w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-gradient-to-r from-[#0b234a] to-orange-500 rounded-full opacity-5 animate-pulse-slow" style={{ animationDelay: '1.5s' }}></div>
+
+          {/* Additional floating elements - Responsive positioning */}
+          <div className="absolute top-1/4 right-1/4 w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 bg-gradient-to-br from-[#E22213] to-orange-500 rounded-full opacity-10 animate-float" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute bottom-1/3 left-1/4 w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 bg-gradient-to-tr from-[#0b234a] to-[#E22213] rounded-full opacity-15 animate-float" style={{ animationDelay: '3s' }}></div>
         </div>
 
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            {/* Badge */}
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg mb-4">
-              <span className="w-2 h-2 bg-orange-400 rounded-full animate-pulse mr-2"></span>
-              <span className="text-sm font-semibold text-white">
-                🎯 Limited Time Offer
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="text-center mb-12 sm:mb-16 lg:mb-20" data-aos="fade-up">
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 shadow-lg mb-6">
+              <span className="w-2 h-2 bg-[#E22213] rounded-full animate-pulse mr-2"></span>
+              <span className="text-sm font-semibold text-[#0b234a]">
+                <BookOpen className="w-4 h-4 inline mr-1" />
+                Comprehensive Learning Resources
               </span>
             </div>
 
-            {/* Main Heading */}
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-              Book your{" "}
-              <span className="bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text text-transparent">
-                FREE Demo
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
+              <span className="bg-gradient-to-r from-[#E22213] via-[#0b234a] to-orange-500 bg-clip-text text-transparent">
+                Coding, Robotics & AI
               </span>
               <br />
-              Today!
+              <span className="text-gray-900">Textbooks</span>
             </h2>
 
-            {/* Description */}
-            <p className="text-xl sm:text-2xl text-blue-100 leading-relaxed max-w-2xl mx-auto mb-8">
-              Experience firsthand how our coding and robotics programs can transform learning.
-              See the platform in action and get all your questions answered.
+            <p className="text-lg sm:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              Structured curriculum designed to build foundational skills and advance to complex AI and robotics concepts
             </p>
+          </div>
 
-            {/* Features */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6 max-w-2xl mx-auto">
-              {[
-                { icon: '⏱️', text: '30 Minutes' },
-                { icon: '💯', text: 'Completely Free' },
-                { icon: '🎁', text: 'Special Offer' }
-              ].map((feature, index) => (
-                <div key={index} className="flex items-center justify-center space-x-2 p-2 bg-white/10 rounded-2xl backdrop-blur-sm border border-white/20">
-                  <span className="text-xl">{feature.icon}</span>
-                  <span className="text-white font-medium text-sm sm:text-base">{feature.text}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Demo Form */}
-            <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-3 sm:p-4 lg:p-6 shadow-2xl border border-white/20 max-w-5xl mx-auto">
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="name" className="block text-white text-sm font-medium mb-2 text-left">
-                      Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      required
-                      className="w-full px-2 py-2 bg-white/90 backdrop-blur-sm border border-white/30 rounded-2xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all duration-300"
-                      placeholder="Enter your name"
-                    />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
+            {/* Left Content - Book Description */}
+            <div className="space-y-6 sm:space-y-8">
+              <div 
+                className="bg-white/80 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-xl border border-white/50 hover:shadow-2xl transition-all duration-500"
+                data-aos="fade-right"
+              >
+                <div className="flex items-start space-x-4 mb-6">
+                  <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-r from-[#E22213] to-orange-500 rounded-xl flex items-center justify-center">
+                    <BookOpen className="text-white text-lg sm:text-xl" />
                   </div>
                   <div>
-                    <label htmlFor="phone" className="block text-white text-sm font-medium mb-2 text-left">
-                      Phone Number *
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      required
-                      className="w-full px-2 py-2 bg-white/90 backdrop-blur-sm border border-white/30 rounded-2xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all duration-300"
-                      placeholder="+91 98765 43210"
-                    />
+                    <h3 className="text-xl sm:text-2xl font-bold text-[#0b234a] mb-2">
+                      Fundamentals to Advanced Concepts
+                    </h3>
+                    <p className="text-gray-700 leading-relaxed">
+                      This book introduces the fundamentals of computers, coding, AI, and robotics, equipping students with essential skills in HTML and Python. Through the PictoBlox platform and the Quarky Ultimate Kit, learners engage in hands-on projects that enhance their problem-solving and logical thinking abilities, empowering them to design and program their own intelligent robots.
+                    </p>
                   </div>
                 </div>
 
-                <div>
-                  <label htmlFor="email" className="block text-white text-sm font-medium mb-2 text-left">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    required
-                    className="w-full px-2 py-2 bg-white/90 backdrop-blur-sm border border-white/30 rounded-2xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all duration-300"
-                    placeholder="your@email.com"
-                  />
+                {/* Platform Highlights */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+                  <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-[#0b234a]/5 to-transparent rounded-xl border border-[#0b234a]/10 hover:scale-105 transition-all duration-300 cursor-pointer">
+                    <div className="w-8 h-8 bg-[#0b234a] rounded-lg flex items-center justify-center">
+                      <Laptop className="text-white text-sm" />
+                    </div>
+                    <span className="text-sm font-medium text-[#0b234a]">PictoBlox Platform</span>
+                  </div>
+                  <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-[#E22213]/5 to-transparent rounded-xl border border-[#E22213]/10 hover:scale-105 transition-all duration-300 cursor-pointer">
+                    <div className="w-8 h-8 bg-[#E22213] rounded-lg flex items-center justify-center">
+                      <Cpu className="text-white text-sm" />
+                    </div>
+                    <span className="text-sm font-medium text-[#E22213]">Quarky Ultimate Kit</span>
+                  </div>
                 </div>
+              </div>
 
-                <div>
-                  <label htmlFor="interest" className="block text-white text-sm font-medium mb-2 text-left">
-                    I'm interested in *
-                  </label>
-                  <select
-                    id="interest"
-                    required
-                    className="w-full px-2 py-2 bg-white/90 backdrop-blur-sm border border-white/30 rounded-2xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all duration-300"
-                  >
-                    <option value="">Select a program</option>
-                    <option value="coding">Coding & Programming</option>
-                    <option value="robotics">Robotics & AI</option>
-                    <option value="arduino">Arduino & Electronics</option>
-                    <option value="iot">IoT Projects</option>
-                    <option value="all">All Programs</option>
-                  </select>
+              {/* Skills Developed */}
+              <div 
+                className="bg-gradient-to-br from-[#0b234a] to-[#E22213] rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-500"
+                data-aos="zoom-in"
+                data-aos-delay="200"
+              >
+                <h4 className="text-lg sm:text-xl font-bold mb-4 flex items-center">
+                  <span className="w-2 h-2 bg-orange-400 rounded-full animate-pulse mr-2"></span>
+                  Skills Developed
+                </h4>
+                <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                  {[
+                    { icon: <Laptop className="w-4 h-4" />, skill: 'HTML & Python' },
+                    { icon: <Settings className="w-4 h-4" />, skill: 'Robotics Design' },
+                    { icon: <Target className="w-4 h-4" />, skill: 'Problem Solving' },
+                    { icon: <Brain className="w-4 h-4" />, skill: 'Logical Thinking' }
+                  ].map((item, index) => (
+                    <div 
+                      key={index} 
+                      className="flex items-center space-x-2 sm:space-x-3 p-2 sm:p-3 bg-white/10 rounded-xl backdrop-blur-sm hover:bg-white/20 transition-all duration-300 cursor-pointer"
+                    >
+                      <span className="text-[#E22213]">{item.icon}</span>
+                      <span className="text-xs sm:text-sm font-medium">{item.skill}</span>
+                    </div>
+                  ))}
                 </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-white text-sm font-medium mb-2 text-left">
-                    Additional Questions
-                  </label>
-                  <textarea
-                    id="message"
-                    rows={3}
-                    className="w-full px-2 py-2 bg-white/90 backdrop-blur-sm border border-white/30 rounded-2xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all duration-300 resize-none"
-                    placeholder="Any specific topics you'd like to cover in the demo?"
-                  ></textarea>
-                </div>
-
-                {/* Submit Button */}
-                <button
-                  type="submit"
-                  className="group relative w-full bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white py-2 px-4 rounded-2xl font-bold text-lg sm:text-xl shadow-2xl transform hover:scale-105 transition-all duration-300 hover:shadow-xl backdrop-blur-sm border-2 border-white/20 overflow-hidden"
-                >
-                  <span className="relative z-10 flex items-center justify-center space-x-2">
-                    <span>🚀 Book My FREE Demo Now</span>
-                    <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
-                  </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </button>
-              </form>
-
-              {/* Trust Indicators */}
-              <div className="mt-6 text-center">
-                <p className="text-blue-100 text-sm">
-                  🔒 Your information is secure. We respect your privacy and never share your data.
-                </p>
               </div>
             </div>
 
-            {/* Additional Info */}
-            <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 text-white">
-              {[
-                {
-                  icon: '📞',
-                  title: 'Instant Confirmation',
-                  description: 'Get demo details immediately'
-                },
-                {
-                  icon: '👨‍🏫',
-                  title: 'Expert Session',
-                  description: '1-on-1 with our specialists'
-                },
-                {
-                  icon: '💬',
-                  title: 'Q&A Included',
-                  description: 'All your questions answered'
-                }
-              ].map((item, index) => (
-                <div key={index} className="flex items-center space-x-3 p-4 bg-white/5 rounded-2xl backdrop-blur-sm border border-white/10">
-                  <div className="text-2xl">{item.icon}</div>
-                  <div className="text-left">
-                    <div className="font-semibold text-white text-sm">{item.title}</div>
-                    <div className="text-blue-100 text-xs">{item.description}</div>
+            {/* Right Content - Grade Levels */}
+            <div className="space-y-6 sm:space-y-8">
+              {/* Grade Selection */}
+              <div 
+                className="bg-white/80 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-xl border border-white/50 hover:shadow-2xl transition-all duration-500"
+                data-aos="fade-left"
+              >
+                <h3 className="text-xl sm:text-2xl font-bold text-[#0b234a] mb-6 flex items-center">
+                  <span className="w-2 h-2 bg-[#E22213] rounded-full animate-pulse mr-2"></span>
+                  Available for Grades
+                </h3>
+
+                <div className="grid grid-cols-2 sm:grid-cols-2 gap-4">
+                  {[
+                    { grade: 'Grade 6', color: 'from-blue-500 to-cyan-500', icon: <Star className="w-5 h-5" /> },
+                    { grade: 'Grade 7', color: 'from-green-500 to-emerald-500', icon: <Rocket className="w-5 h-5" /> },
+                    { grade: 'Grade 8', color: 'from-purple-500 to-pink-500', icon: <Award className="w-5 h-5" /> },
+                    { grade: 'Grade 9-12', color: 'from-orange-500 to-red-500', icon: <Target className="w-5 h-5" /> }
+                  ].map((item, index) => (
+                    <div
+                      key={index}
+                      className="group relative bg-gradient-to-br from-white to-gray-50 rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg border border-gray-200/50 transform hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden"
+                      data-aos="flip-up"
+                      data-aos-delay={index * 100}
+                    >
+                      {/* Background Gradient on Hover */}
+                      <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
+
+                      {/* Animated Border */}
+                      <div className={`absolute inset-0 rounded-xl sm:rounded-2xl bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-sm`}></div>
+
+                      <div className="relative z-10 text-center">
+                        <div className="text-2xl sm:text-3xl mb-2 sm:mb-3 transform group-hover:scale-110 transition-transform duration-300 text-[#E22213]">
+                          {item.icon}
+                        </div>
+                        <div className={`text-sm sm:text-base font-bold bg-gradient-to-r ${item.color} bg-clip-text text-transparent`}>
+                          {item.grade}
+                        </div>
+                        <div className="text-xs text-gray-500 mt-1 group-hover:text-gray-700 transition-colors duration-300">
+                          Curriculum
+                        </div>
+                      </div>
+
+                      {/* Hover Effect */}
+                      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-1 bg-gradient-to-r from-transparent via-current to-transparent group-hover:w-3/4 transition-all duration-300"></div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Features */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div 
+                  className="bg-gradient-to-br from-orange-500/10 to-red-500/5 rounded-2xl p-4 sm:p-6 border border-orange-200/50 hover:shadow-lg transition-all duration-300 cursor-pointer"
+                  data-aos="zoom-in"
+                  data-aos-delay="100"
+                >
+                  <div className="flex items-center space-x-3">
+                    <div className="w-10 h-10 bg-orange-500 rounded-lg flex items-center justify-center">
+                      <Settings className="text-white text-sm" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-gray-900">Hands-on</div>
+                      <div className="text-sm text-gray-600">Projects</div>
+                    </div>
                   </div>
                 </div>
-              ))}
+
+                <div 
+                  className="bg-gradient-to-br from-blue-500/10 to-cyan-500/5 rounded-2xl p-4 sm:p-6 border border-blue-200/50 hover:shadow-lg transition-all duration-300 cursor-pointer"
+                  data-aos="zoom-in"
+                  data-aos-delay="200"
+                >
+                  <div className="flex items-center space-x-3">
+                    <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center">
+                      <Brain className="text-white text-sm" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-gray-900">Intelligent</div>
+                      <div className="text-sm text-gray-600">Robots</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* CTA Button */}
+              <button 
+                className="group relative w-full bg-gradient-to-r from-[#E22213] to-orange-500 hover:from-[#E22213]/90 hover:to-orange-600 text-white py-3 sm:py-4 rounded-xl sm:rounded-2xl font-semibold text-base sm:text-lg shadow-xl transform hover:scale-105 transition-all duration-300 hover:shadow-2xl backdrop-blur-sm border-2 border-white/20 overflow-hidden"
+                data-aos="fade-up"
+                data-aos-delay="300"
+              >
+                <span className="relative z-10 flex items-center justify-center space-x-2">
+                  <BookOpen className="w-5 h-5" />
+                  <span>View Sample Chapters</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </button>
             </div>
+          </div>
+
+          {/* Additional Info */}
+          <div className="mt-12 sm:mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+            {[
+              {
+                icon: <FileText className="w-8 h-8 text-[#E22213]" />,
+                title: 'Structured Curriculum',
+                description: 'Progressive learning path from basics to advanced concepts'
+              },
+              {
+                icon: <Settings className="w-8 h-8 text-[#E22213]" />,
+                title: 'Project-Based Learning',
+                description: 'Build real projects with PictoBlox and Quarky Kit'
+              },
+              {
+                icon: <Users className="w-8 h-8 text-[#E22213]" />,
+                title: 'Teacher Resources',
+                description: 'Complete lesson plans and assessment tools'
+              }
+            ].map((item, index) => (
+              <div 
+                key={index} 
+                className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/50 transform hover:scale-105 transition-all duration-300 hover:shadow-xl cursor-pointer"
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
+              >
+                <div className="text-3xl mb-3">{item.icon}</div>
+                <h4 className="font-bold text-gray-900 mb-2">{item.title}</h4>
+                <p className="text-sm text-gray-600 leading-relaxed">{item.description}</p>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -998,11 +896,11 @@ const RoboticsAI = () => {
     }
     
     .animate-float {
-      animation: float 6s ease-in-out infinite;
+      animation: float 8s ease-in-out infinite;
     }
   `}</style>
       </section>
-
+      <BookFreeDemo />
       <OurBelivers />
     </>
   );

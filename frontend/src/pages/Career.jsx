@@ -4,7 +4,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 
 import CareerHero from '../components/Career/CareerHero.jsx';
-import CareerStats from '../components/Career/CareerStats';
+// import CareerStats from '../components/Career/CareerStats';
 import JobOpenings from '../components/Career/JobOpenings';
 import PerksBenefits from '../components/Career/PerksBenefits';
 import CultureSection from '../components/Career/CultureSection';
@@ -110,7 +110,7 @@ const Career = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       <CareerHero />
-      <CareerStats />
+      {/* <CareerStats /> */}
 
       <JobOpenings
         activeCategory={activeCategory}
