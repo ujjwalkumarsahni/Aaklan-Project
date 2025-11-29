@@ -12,6 +12,16 @@ const transporter = nodemailer.createTransport({
   });
 
 
+// Verify connection on startup
+transporter.verify((error, success) => {
+    if (error) {
+        console.log('Brevo SMTP connection error:', error);
+    } else {
+        console.log('Brevo SMTP server is ready to send messages');
+        console.log('Using SMTP user:', process.env.SMTP_USER);
+    }
+});
+
 export default transporter;
 
 

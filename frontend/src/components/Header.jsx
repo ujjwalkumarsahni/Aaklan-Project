@@ -64,6 +64,7 @@ useEffect(() => {
     { name: "LMS", path: "/lms" },
     { name: "Books", path: "/books" },
     { name: "Dashboard", path: "/dashboard" },
+    { name: "dashboard2", path: "/dashboard2" },
   ];
 
   return (

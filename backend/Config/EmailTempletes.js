@@ -272,3 +272,134 @@ export const emailTemplates = {
     </div>
   `
 };
+
+
+
+export const otpEmailTemplate = (otp, name) => {
+    return `
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <style>
+                .container { max-width: 600px; margin: 0 auto; padding: 20px; font-family: Arial, sans-serif; }
+                .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; text-align: center; color: white; border-radius: 10px 10px 0 0; }
+                .content { padding: 30px; background: #f9f9f9; border-radius: 0 0 10px 10px; }
+                .otp-code { font-size: 32px; font-weight: bold; color: #667eea; text-align: center; margin: 20px 0; }
+                .footer { text-align: center; margin-top: 20px; color: #666; font-size: 12px; }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <div class="header">
+                    <h1>OTP Verification</h1>
+                </div>
+                <div class="content">
+                    <h2>Hello ${name},</h2>
+                    <p>Your One-Time Password (OTP) for demo request verification is:</p>
+                    <div class="otp-code">${otp}</div>
+                    <p>This OTP is valid for 10 minutes. Please do not share it with anyone.</p>
+                    <p>If you didn't request this OTP, please ignore this email.</p>
+                </div>
+                <div class="footer">
+                    <p>&copy; 2024 Your Company. All rights reserved.</p>
+                </div>
+            </div>
+        </body>
+        </html>
+    `;
+};
+
+export const adminNotificationTemplate = (formData) => {
+    return `
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <style>
+                .container { max-width: 600px; margin: 0 auto; padding: 20px; font-family: Arial, sans-serif; }
+                .header { background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%); padding: 30px; text-align: center; color: white; border-radius: 10px 10px 0 0; }
+                .content { padding: 30px; background: #f9f9f9; border-radius: 0 0 10px 10px; }
+                .info-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+                .info-table td { padding: 10px; border-bottom: 1px solid #ddd; }
+                .info-table tr:last-child td { border-bottom: none; }
+                .status-pending { color: #e67e22; font-weight: bold; }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <div class="header">
+                    <h1>New Demo Request</h1>
+                </div>
+                <div class="content">
+                    <h2>A new demo request has been submitted:</h2>
+                    <table class="info-table">
+                        <tr><td><strong>Name:</strong></td><td>${formData.name}</td></tr>
+                        <tr><td><strong>Email:</strong></td><td>${formData.email}</td></tr>
+                        <tr><td><strong>Phone:</strong></td><td>${formData.phoneNumber}</td></tr>
+                        <tr><td><strong>School:</strong></td><td>${formData.schoolName}</td></tr>
+                        <tr><td><strong>City:</strong></td><td>${formData.city}</td></tr>
+                        <tr><td><strong>Designation:</strong></td><td>${formData.designation}</td></tr>
+                        <tr><td><strong>Interest:</strong></td><td>${formData.scheduleCallFor}</td></tr>
+                        <tr><td><strong>Status:</strong></td><td class="status-pending">Pending</td></tr>
+                    </table>
+                    <p><strong>Message:</strong> ${formData.message || 'No message provided'}</p>
+                    <p>Please log in to the admin dashboard to review this request.</p>
+                </div>
+            </div>
+        </body>
+        </html>
+    `;
+};
+
+export const dailyReminderTemplate = (pendingRequests) => {
+    let requestsHTML = pendingRequests.map(request => `
+        <tr>
+            <td>${request.name}</td>
+            <td>${request.email}</td>
+            <td>${request.phoneNumber}</td>
+            <td>${request.schoolName}</td>
+            <td>${new Date(request.createdAt).toLocaleDateString()}</td>
+        </tr>
+    `).join('');
+
+    return `
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <style>
+                .container { max-width: 700px; margin: 0 auto; padding: 20px; font-family: Arial, sans-serif; }
+                .header { background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%); padding: 30px; text-align: center; color: white; border-radius: 10px 10px 0 0; }
+                .content { padding: 30px; background: #f9f9f9; border-radius: 0 0 10px 10px; }
+                .pending-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+                .pending-table th, .pending-table td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+                .pending-table th { background-color: #34495e; color: white; }
+                .count { font-size: 18px; color: #e74c3c; font-weight: bold; }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <div class="header">
+                    <h1>Daily Reminder: Pending Demo Requests</h1>
+                </div>
+                <div class="content">
+                    <p>You have <span class="count">${pendingRequests.length}</span> pending demo requests that need attention:</p>
+                    <table class="pending-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>School</th>
+                                <th>Submitted On</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${requestsHTML}
+                        </tbody>
+                    </table>
+                    <p>Please log in to the admin dashboard to review and take action on these requests.</p>
+                </div>
+            </div>
+        </body>
+        </html>
+    `;
+};
