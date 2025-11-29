@@ -1,5 +1,14 @@
 import React, { useState, useRef, useEffect } from "react";
 import { card } from "../assets/assets";
+import { 
+  Lightbulb, 
+  Film, 
+  Users, 
+  Award, 
+  Rocket, 
+  ChevronRight, 
+  ArrowRight
+} from "lucide-react";
 
 const Excellence = () => {
   const items = [
@@ -8,7 +17,7 @@ const Excellence = () => {
       desc: "Choose from Communication, STEM and Financial Literacy lab",
       img: card.one,
       color: "from-[#0b234a] to-[#E22213]",
-      icon: "💡",
+      icon: <Lightbulb className="w-6 h-6" />,
       features: ["Communication Lab", "STEM Lab", "Financial Literacy"]
     },
     {
@@ -16,7 +25,7 @@ const Excellence = () => {
       desc: "Audio visual content. Think > Apply > Create Pedagogy",
       img: card.two,
       color: "from-[#0b234a] to-orange-500",
-      icon: "🎬",
+      icon: <Film className="w-6 h-6" />,
       features: ["Audio-Visual", "Think-Apply-Create", "Gamified Learning"]
     },
     {
@@ -24,7 +33,7 @@ const Excellence = () => {
       desc: "Curriculum delivered by AAKLAN Expert Faculty",
       img: card.three,
       color: "from-orange-500 to-[#E22213]",
-      icon: "👨‍🏫",
+      icon: <Users className="w-6 h-6" />,
       features: ["AAKLAN Experts", "Certified Faculty", "Industry Professionals"]
     },
     {
@@ -32,7 +41,7 @@ const Excellence = () => {
       desc: "Full responsibility to create impact and show results",
       img: card.four,
       color: "from-[#E22213] to-orange-500",
-      icon: "📜",
+      icon: <Award className="w-6 h-6" />,
       features: ["Verified Impact", "Certifications", "Progress Tracking"]
     },
     {
@@ -40,7 +49,7 @@ const Excellence = () => {
       desc: "Next-gen Learning Management System for modern education",
       img: card.five,
       color: "from-[#0b234a] to-orange-500",
-      icon: "🚀",
+      icon: <Rocket className="w-6 h-6" />,
       features: ["AI-Powered", "User-Friendly", "Comprehensive Analytics"]
     },
   ];
@@ -55,7 +64,7 @@ const Excellence = () => {
     
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % items.length);
-    }, 4000);
+    }, 2000);
 
     return () => clearInterval(interval);
   }, [isVisible, items.length]);
@@ -85,28 +94,49 @@ const Excellence = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative w-full py-5 lg:py-7 bg-white overflow-hidden"
+      className="relative w-full py-3 bg-white overflow-hidden"
     >
-      {/* Geometric Background Pattern */}
+      {/* New Clean Background Structure */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-0 left-0 w-72 h-72 bg-gradient-to-br from-[#0b234a]/10 to-[#E22213]/10 transform -translate-x-1/2 -translate-y-1/2 rotate-45"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-[#0b234a]/10 to-orange-500/10 transform translate-x-1/2 translate-y-1/2 rotate-12"></div>
+        {/* Large Gradient Blobs */}
+        <div className="absolute -top-40 -left-40 w-80 h-80 bg-gradient-to-br from-[#0b234a]/15 to-[#E22213]/10 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-gradient-to-tr from-orange-500/15 to-[#E22213]/10 rounded-full blur-3xl"></div>
         
-        {/* Grid Dots */}
-        <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle,#000_1px,transparent_1px)] bg-[length:40px_40px]"></div>
+        {/* Subtle Grid Lines */}
+        <div className="absolute inset-0 opacity-[0.02]">
+          <div className="w-full h-full bg-[linear-gradient(90deg,transparent_79px,#000_79px,#000_81px,transparent_81px),linear-gradient(transparent_79px,#000_79px,#000_81px,transparent_81px)] bg-[size:100px_100px]"></div>
+        </div>
+
+        {/* Floating Abstract Shapes */}
+        <div className="absolute top-20 right-20 w-16 h-16 bg-gradient-to-br from-[#0b234a]/20 to-transparent rounded-lg rotate-45 animate-float"></div>
+        <div className="absolute bottom-32 left-20 w-12 h-12 bg-gradient-to-tr from-[#E22213]/20 to-transparent rounded-lg -rotate-12 animate-float delay-1000"></div>
+        <div className="absolute top-1/2 left-1/4 w-8 h-8 bg-gradient-to-bl from-orange-500/20 to-transparent rounded-lg rotate-45 animate-float delay-1500"></div>
+        
+        {/* Subtle Wave Pattern */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 opacity-[0.03]">
+          <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-full">
+            <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="currentColor"></path>
+          </svg>
+        </div>
       </div>
+
+      {/* CSS for floating animation */}
+      <style jsx>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-15px) rotate(5deg); }
+        }
+        .animate-float {
+          animation: float 8s ease-in-out infinite;
+        }
+      `}</style>
 
       <div className="relative max-w-7xl mx-auto px-6">
         {/* Section Header */}
         <div className={`text-center mb-16 transition-all duration-700 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>
-          <div className="inline-flex items-center gap-3 px-6 py-3 bg-white rounded-2xl shadow-lg border border-gray-100 mb-8">
-            <div className="flex gap-1">
-              {[1, 2, 3].map((dot) => (
-                <div key={dot} className="w-2 h-2 bg-[#0b234a] rounded-full"></div>
-              ))}
-            </div>
+          <div className="inline-flex items-center gap-3 px-6 py-3 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-100/50 mb-8">
             <span className="text-gray-700 font-semibold text-sm uppercase tracking-wide">
               Why We Stand Out
             </span>
@@ -145,21 +175,21 @@ const Excellence = () => {
                   onMouseEnter={() => setActiveIndex(index)}
                   onClick={() => setActiveIndex(index)}
                 >
-                  <div className="flex items-center space-x-4">
+                  <div className="flex items-center space-x-2">
                     {/* Icon Badge */}
-                    <div className={`flex-shrink-0 w-16 h-16 rounded-xl bg-gradient-to-br ${item.color} p-0.5 shadow-lg transition-transform duration-300 ${
+                    <div className={`shrink-0 w-8 h-8 rounded-xl bg-linear-to-br ${item.color} p-0.5 shadow-lg transition-transform duration-300 ${
                       activeIndex === index ? 'scale-110 rotate-6' : 'group-hover:scale-105'
                     }`}>
-                      <div className="w-full h-full bg-white rounded-lg flex items-center justify-center text-2xl">
+                      <div className="w-full h-full bg-white rounded-lg flex items-center justify-center">
                         {item.icon}
                       </div>
                     </div>
 
                     {/* Content */}
                     <div className="flex-1 min-w-0">
-                      <h3 className={`text-lg font-bold mb-1 transition-colors duration-300 ${
+                      <h3 className={`text-lg font-bold transition-colors duration-300 ${
                         activeIndex === index 
-                          ? `bg-gradient-to-r ${item.color} bg-clip-text text-transparent`
+                          ? `bg-linear-to-r ${item.color} bg-clip-text text-transparent`
                           : 'text-gray-800'
                       }`}>
                         {item.title}
@@ -170,19 +200,17 @@ const Excellence = () => {
                     </div>
 
                     {/* Arrow Indicator */}
-                    <div className={`flex-shrink-0 transition-all duration-300 ${
+                    <div className={`shrink-0 transition-all duration-300 ${
                       activeIndex === index 
                         ? 'opacity-100 translate-x-0'
                         : 'opacity-0 translate-x-2 group-hover:opacity-100'
                     }`}>
-                      <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
+                      <ChevronRight className="w-5 h-5 text-gray-400" />
                     </div>
                   </div>
 
                   {/* Progress Bar */}
-                  <div className={`absolute bottom-0 left-0 h-1 bg-gradient-to-r ${item.color} rounded-full transition-all duration-500 ${
+                  <div className={`absolute bottom-0 left-0 h-1 bg-linear-to-r ${item.color} rounded-full transition-all duration-500 ${
                     activeIndex === index ? 'w-full' : 'w-0'
                   }`}></div>
                 </div>
@@ -210,7 +238,7 @@ const Excellence = () => {
                   {/* Content Overlay */}
                   <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
                     <div className="flex items-center gap-3 mb-3">
-                      <div className={`w-12 h-12 bg-gradient-to-br ${items[activeIndex].color} rounded-xl flex items-center justify-center text-white text-xl`}>
+                      <div className={`w-12 h-12 bg-gradient-to-br ${items[activeIndex].color} rounded-xl flex items-center justify-center text-white`}>
                         {items[activeIndex].icon}
                       </div>
                       <h3 className="text-2xl font-bold">{items[activeIndex].title}</h3>
@@ -268,7 +296,7 @@ const Excellence = () => {
         }`}>
           {[
             { value: "95%", label: "Success Rate" },
-            { value: "10K+", label: "Students" },
+            { value: "100K+", label: "Students" },
             { value: "500+", label: "Educators" },
             { value: "98%", label: "Satisfaction" }
           ].map((stat, index) => (
@@ -302,9 +330,7 @@ const Excellence = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <button className="px-4 py-2 bg-white text-[#0b234a] font-semibold rounded-xl hover:bg-gray-100 transform hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center">
                   <span>Start Free Trial</span>
-                  <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
+                  <ArrowRight className="w-5 h-5 ml-2" />
                 </button>
                 <button className="px-4 py-2 bg-transparent text-white font-semibold rounded-xl border-2 border-white/30 hover:border-white transition-all duration-300">
                   Schedule Demo

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { assets } from "../assets/assets.js";
@@ -7,9 +7,52 @@ import { FaMapMarkerAlt, FaEnvelope, FaPhoneAlt } from "react-icons/fa";
 import { useRef } from "react";
 
 export default function Header() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false); // login/signup modal
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
   const location = useLocation();
+
+const [showTopBar, setShowTopBar] = useState(true);
+const lastScroll = useRef(0);
+
+useEffect(() => {
+  const handleScroll = () => {
+    const currentScroll = window.scrollY;
+
+    if (currentScroll > lastScroll.current && currentScroll > 50) {
+      // scrolling down
+      setShowTopBar(false);
+    } else {
+      // scrolling up
+      setShowTopBar(true);
+    }
+
+    lastScroll.current = currentScroll;
+  };
+
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
+
+
+
+  // Active route check
+  const isActivePath = useCallback(
+    (path) => location.pathname === path,
+    [location]
+  );
+
+  // Sticky header shadow on scroll
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+
 
 
 
@@ -23,17 +66,15 @@ export default function Header() {
     { name: "Dashboard", path: "/dashboard" },
   ];
 
-
-  const isActivePath = (path) => {
-    return location.pathname === path;
-  };
-
   return (
     <header className="w-full sticky top-0 z-50 transition-all duration-500">
       {/* Top Bar */}
-      <div
-        className={`bg-[#0b234a] text-white text-sm transition-all duration-500 hidden sm:block`}
-      >
+     <div
+  className={`bg-[#0b234a] text-white text-sm hidden sm:block 
+  overflow-hidden transition-all duration-500 
+  ${showTopBar ? "max-h-16 opacity-100" : "max-h-0 opacity-0"}
+`}
+>
 
         <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-6 py-2 px-6 text-white">
           {/* Address */}

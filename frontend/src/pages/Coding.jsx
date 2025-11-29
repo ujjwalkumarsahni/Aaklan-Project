@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { 
@@ -14,13 +14,27 @@ import {
   TrendingUp,
   Zap,
   Lightbulb,
-  Target
+  Target,
+  ArrowRight,
+  Phone
 } from 'lucide-react'
 import OurBelivers from '../components/OurBelivers'
 import HeroHeading from '../components/PageHeading/HeroHeading'
 import BookFreeDemo from '../components/BookFreeDemo'
 
 const Coding = () => {
+
+  const bookDemoRef = useRef(null);
+  
+    // Function to scroll to BookFreeDemo section
+    const scrollToBookDemo = () => {
+      bookDemoRef.current?.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    };
+
+
   useEffect(() => {
     // Initialize AOS
     AOS.init({
@@ -134,19 +148,19 @@ const Coding = () => {
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 pt-6" data-aos="fade-up" data-aos-delay="600">
-                <button className="group relative bg-gradient-to-r from-[#E22213] to-orange-500 hover:from-[#E22213]/90 hover:to-orange-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-semibold text-base sm:text-lg shadow-2xl transform hover:scale-105 transition-all duration-300 hover:shadow-xl backdrop-blur-sm border-2 border-white/20 overflow-hidden">
+                <button onClick={scrollToBookDemo} className="group relative bg-gradient-to-r from-[#E22213] to-orange-500 hover:from-[#E22213]/90 hover:to-orange-600 text-white px-6 py-2 sm:px-8 sm:py-3 rounded-xl sm:rounded-2xl font-semibold text-base sm:text-lg shadow-xl sm:shadow-2xl transform hover:scale-105 transition-all duration-300 hover:shadow-xl backdrop-blur-sm border-2 border-white/20 overflow-hidden w-full sm:w-auto">
                   <span className="relative z-10 flex items-center justify-center space-x-2">
-                    <Rocket className="w-5 h-5" />
-                    <span>Get Started</span>
-                    <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
+                    <Target className="w-5 h-5" />
+                    <span>Book Demo</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                   </span>
                   <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </button>
 
-                <button className="group relative border-2 border-[#0b234a] hover:border-[#E22213] text-[#0b234a] hover:text-[#E22213] px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-semibold text-base sm:text-lg transition-all duration-300 hover:shadow-xl backdrop-blur-sm bg-white/80 hover:bg-white overflow-hidden">
+                <button onClick={() => window.open('https://wa.me/919571677609?text=Hi%20I%20want%20to%20know%20more%20about%20your%20coding', '_blank')} className="group relative border-2 border-[#0b234a] hover:border-[#E22213] text-[#0b234a] hover:text-[#E22213] px-6 py-2 sm:px-8 sm:py-3 rounded-xl sm:rounded-2xl font-semibold text-base sm:text-lg transition-all duration-300 hover:shadow-xl backdrop-blur-sm bg-white/80 hover:bg-white overflow-hidden w-full sm:w-auto">
                   <span className="relative z-10 flex items-center justify-center space-x-2">
-                    <Smartphone className="w-5 h-5" />
-                    <span>Book Free Demo</span>
+                    <Phone className="w-5 h-5" />
+                    <span>Contact Us</span>
                   </span>
                   <div className="absolute inset-0 bg-gradient-to-r from-[#0b234a]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </button>
@@ -155,7 +169,7 @@ const Coding = () => {
               {/* Stats */}
               <div className="grid grid-cols-3 gap-4 sm:gap-6 lg:gap-8 pt-6 sm:pt-8 max-w-md mx-auto lg:mx-0">
                 {[
-                  { number: '50K+', label: 'Students Trained', icon: <Users className="w-4 h-4" /> },
+                  { number: '100K+', label: 'Students Trained', icon: <Users className="w-4 h-4" /> },
                   { number: '100+', label: 'Schools', icon: <BookOpen className="w-4 h-4" /> },
                   { number: '98%', label: 'Success Rate', icon: <TrendingUp className="w-4 h-4" /> }
                 ].map((stat, index) => (
@@ -529,7 +543,9 @@ const Coding = () => {
         `}</style>
       </section>
 
-      <BookFreeDemo />
+      <div ref={bookDemoRef}>
+        <BookFreeDemo />
+      </div>
       <OurBelivers />
     </>
   )

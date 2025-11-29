@@ -1,8 +1,10 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { vrFeatures } from '../assets/assets';
+import { useNavigate } from 'react-router-dom';
 
 const VrFeatureSection = () => {
+    const navigate = useNavigate()
     return (
         <section className="w-full py-2 px-4 bg-gradient-to-br from-white to-gray-50 overflow-hidden">
             {/* Background Elements */}
@@ -91,7 +93,7 @@ const VrFeatureSection = () => {
                     </div>
 
                     <div className="flex flex-col sm:flex-row gap-4 mt-4">
-                        <button className="bg-gradient-to-r from-[#0b234a] to-[#E22213] hover:from-[#0b234a]/90 hover:to-[#E22213]/90 text-white font-semibold text-lg px-4 py-2 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center space-x-2">
+                        <button onClick={() => navigate('vr-ar-lab')} className="bg-gradient-to-r from-[#0b234a] to-[#E22213] hover:from-[#0b234a]/90 hover:to-[#E22213]/90 text-white font-semibold text-lg px-4 py-2 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center space-x-2">
                             <span>Explore VR Now</span>
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />

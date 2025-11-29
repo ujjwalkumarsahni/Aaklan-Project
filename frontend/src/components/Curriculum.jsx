@@ -130,7 +130,7 @@ const Curriculum = () => {
             {/* Stats */}
             <div className="grid grid-cols-2 gap-6">
               <div className="text-center p-4 bg-white rounded-2xl shadow-lg border border-gray-100">
-                <div className="text-2xl font-bold bg-linear-to-r from-[#0b234a] to-[#E22213] bg-clip-text text-transparent">50K+</div>
+                <div className="text-2xl font-bold bg-linear-to-r from-[#0b234a] to-[#E22213] bg-clip-text text-transparent">100K+</div>
                 <div className="text-sm text-gray-600 mt-1">Students Enrolled</div>
               </div>
               <div className="text-center p-4 bg-white rounded-2xl shadow-lg border border-gray-100">
