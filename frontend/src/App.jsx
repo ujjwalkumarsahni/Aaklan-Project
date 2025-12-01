@@ -20,9 +20,9 @@ import Career from './pages/Career.jsx'
 import Blog from './pages/Blog.jsx'
 import CodingBootcamp from './pages/CodingBootCamp.jsx'
 import LMS from './pages/LMS.jsx'
-import Dashboard from './Dashboard/Dashboard.jsx'
+// import Dashboard from './Dashboard/Dashboard.jsx'
 import VideoUpload from './pages/VideoUpload.jsx'
-import Dashboard2 from './Dashboard/Dashboard2.jsx'
+// import Dashboard2 from './Dashboard/Dashboard2.jsx'
 
 const App = () => {
   return (
@@ -49,9 +49,9 @@ const App = () => {
 
 
           <Route path="/programs/computer-coding-books-1-8" element={<CodingBootcamp />} />
-
+{/* 
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/dashboard2" element={<Dashboard2 />} />
+          <Route path="/dashboard2" element={<Dashboard2 />} /> */}
           <Route path="/video-submition" element={<VideoUpload />} />
 
         </Routes>

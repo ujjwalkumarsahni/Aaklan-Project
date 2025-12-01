@@ -68,6 +68,16 @@ const Navbar = () => {
         >
           Job List
         </NavLink>
+        <NavLink
+          to="/Query-detail"
+          className={({ isActive }) =>
+            `px-3 py-2 rounded-md transition ${
+              isActive ? 'bg-blue-600 text-white' : 'hover:bg-gray-200 dark:hover:bg-gray-700'
+            }`
+          }
+        >
+          Query Detail
+        </NavLink>
       </ul>
 
       {/* Logout Button */}

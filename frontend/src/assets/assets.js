@@ -63,8 +63,8 @@ import VRrightimage from './VR-Image/VRrightimage.png'
 import parentImage from './VR-Image/parentImage.png'
 import RBRightImage from './RB/RBRightImage.png'
 
-import labSetup from './labSetup.jpeg'
-import microcontroller from './microcontroller.jpeg'
+import labSetup from './labSetup.jpg'
+import microcontroller from './microcontroller2.jpeg'
 export const assets = {
     logo,
     heroBanner,

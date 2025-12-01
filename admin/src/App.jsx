@@ -6,6 +6,7 @@ import JobList from './pages/JobList.jsx'
 import { ToastContainer } from 'react-toastify'
 import Navbar from './components/Navbar.jsx'
 import { Route, Routes } from 'react-router-dom'
+import Dashboard2 from './pages/Dashboard2.jsx'
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
           <Route path='//hiring-detail' element={<HiringDetails />}/>
           <Route path='/add-job' element={<AddJob />}/>
           <Route path='/job-list' element={<JobList />}/>
+          <Route path='/Query-detail' element={<Dashboard2 />}/>
         </Routes>
       </div>
     </div>

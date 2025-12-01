@@ -470,7 +470,7 @@ const VRARLab = () => {
         </div>
       </section>
 
-      <section className="relative py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-gray-50 via-[#0b234a]/10 to-orange-50/30 overflow-hidden">
+      <section className="relative py-10 bg-gradient-to-br from-gray-50 via-[#0b234a]/10 to-orange-50/30 overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           {/* Floating Elements */}
@@ -735,7 +735,7 @@ const VRARLab = () => {
   `}</style>
       </section>
 
-      <section className="relative py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-gray-50 via-indigo-50/30 to-blue-50/30 overflow-hidden">
+      <section className="relative py-10 bg-gradient-to-br from-gray-50 via-indigo-50/30 to-blue-50/30 overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           {/* Floating Elements */}
@@ -784,7 +784,7 @@ const VRARLab = () => {
               </div>
 
               {/* Main Heading */}
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
                 <span className="bg-gradient-to-r from-[#E22213] via-[#0b234a] to-orange-500 bg-clip-text text-transparent">
                   "Bridging the gap
                 </span>
@@ -1221,7 +1221,7 @@ const VRARLab = () => {
               </div>
 
               {/* Main Heading */}
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
                 <span className="bg-gradient-to-r from-[#E22213] via-[#0b234a] to-orange-500 bg-clip-text text-transparent">
                   "Easing the burden
                 </span>
