@@ -18,10 +18,11 @@ import PrivacyPolicy from './pages/PrivacyPolicy.jsx'
 import RefundPolicy from './pages/RefundPolicy.jsx'
 import Career from './pages/Career.jsx'
 import Blog from './pages/Blog.jsx'
-import CodingBootcamp from './pages/CodingBootCamp.jsx'
 import LMS from './pages/LMS.jsx'
 // import Dashboard from './Dashboard/Dashboard.jsx'
 import VideoUpload from './pages/VideoUpload.jsx'
+import ComputerCodingBookPage from './pages/ComputerCodingBookPage.jsx'
+import RoboticsAIBookPage from './pages/RoboticsAIBookPage.jsx'
 // import Dashboard2 from './Dashboard/Dashboard2.jsx'
 
 const App = () => {
@@ -48,7 +49,8 @@ const App = () => {
           <Route path="/blog" element={<Blog />} />
 
 
-          <Route path="/programs/computer-coding-books-1-8" element={<CodingBootcamp />} />
+          <Route path="/programs/computer-coding-books-1-8" element={<ComputerCodingBookPage />} />
+          <Route path="/programs/coding-robotics-ai-books-6-8" element={<RoboticsAIBookPage />} />
 {/* 
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/dashboard2" element={<Dashboard2 />} /> */}
