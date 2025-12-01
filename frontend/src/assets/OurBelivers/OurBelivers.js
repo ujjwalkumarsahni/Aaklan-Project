@@ -4,7 +4,7 @@ import skyworld from '../OurBelivers/skyworld.jpg'
 import sas from '../OurBelivers/sas.png'
 import chatrpati from '../OurBelivers/chhatrpati.gif'
 import mac from '../OurBelivers/mac.png'
-import mhs from '../OurBelivers/mhs.jpg'
+import mhs from '../OurBelivers/MHS.jpg'
 
 export const ourBelivers = {
     gps,
